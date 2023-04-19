@@ -1,0 +1,23 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. HelloWorld.
+
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT HELLO-FILE ASSIGN TO "index.html"
+               ORGANIZATION IS LINE SEQUENTIAL.
+
+       DATA DIVISION.
+       FILE SECTION.
+       FD  HELLO-FILE.
+       01  HELLO-RECORD.
+           05 HELLO-DATA           PIC X(12).
+
+       PROCEDURE DIVISION.
+       BEGIN-HELLO-WORLD.
+           OPEN OUTPUT HELLO-FILE.
+           MOVE "Hello COBOL!" TO HELLO-DATA.
+           WRITE HELLO-RECORD.
+           CLOSE HELLO-FILE.
+           STOP RUN.
